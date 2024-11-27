@@ -1,6 +1,7 @@
 # 🎮 Minecraft Auto Updater
 
 A powerful and user-friendly tool designed to automatically update Minecraft ATM (All The Mods) server files, ensuring your server stays up-to-date with minimal manual intervention.
+Update that ATM modpack with one click!
 
 ## ✨ Features
 
