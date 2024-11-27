@@ -7,6 +7,8 @@ import pathlib
 import sys
 import logging
 import time
+import os
+import re
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -122,9 +124,43 @@ def download_server_files(driver: webdriver.Chrome, download_url: str) -> None:
         raise
 
 
+def get_current_version() -> str | None:
+
+    # Get all directories in the current path
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    directories = [
+        d
+        for d in os.listdir(current_dir)
+        if os.path.isdir(os.path.join(current_dir, d))
+    ]
+
+    # Filter directories matching the pattern "Server-Files-1.XX"
+    pattern = r"^Server-Files-1\.\d+$"
+    matching_dirs = [
+        d for d in directories if re.match(pattern, d) and not d.endswith(".zip")
+    ]
+
+    # Check if we have exactly one matching directory
+    if len(matching_dirs) > 1:
+        raise RuntimeError(
+            f"Multiple Server-Files directories found: {', '.join(matching_dirs)}"
+        )
+
+    return matching_dirs[0] if matching_dirs else None
+
+
 def main() -> bool:
     driver: webdriver.Chrome | None = None
     try:
+        logger.info("Identifying current ATM modpack version...")
+        current_version = get_current_version()
+
+        if current_version is None:
+            logger.error("Failed to get current version")
+            return False
+
+        logger.info(f"Current version found : {current_version}")
+
         logger.info("Initializing WebDriver...")
         driver = setup_webdriver()
 
