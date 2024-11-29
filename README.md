@@ -11,3 +11,48 @@ Update that ATM modpack with one click!
 - 📝 Detailed logging of update processes
 - ⚡ Fast and efficient file handling
 - 🛡️ Error handling and recovery
+
+## 🚀 App flow
+
+⚠️ **Disclaimer :** The following workflow is tailored to a private server and will be made generic later.
+
+  ```markdown
+  What to do?
+
+  +-------------------+
+  |  Identify         |
+  |  Navigate         |
+  |  Find Latest      |
+  |  Check for        |
+  |  Download         |
+  |  Unzip            |
+  |  Backup           |
+  |  Zip Old          |
+  |  Delete Old       |
+  |  Delete Old New   |
+  +-------------------+
+  ```
+  
+  ```markdown
+  What to backup?
+  
+  - Folders/
+    --> journeymap
+    --> fluffyworld
+
+  - Files
+    --> server.properties
+    --> whitelist.json
+    --> ops.json
+    --> eula.txt
+
+  - Bonus mods
+    --> Rcon Control mod in /mods folder
+  ```
+
+## 🛣️ Coming up next
+
+- **Choose the files to backup**
+- **Export the changelogs somewhere** (but where?)
+- **Make it a generic app for any ATM server**
+- More ideas to come...
