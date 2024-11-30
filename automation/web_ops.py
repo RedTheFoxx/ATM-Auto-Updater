@@ -50,7 +50,7 @@ def build_download_url(version_url: str) -> str:
     file_id = version_url.split("/")[-1]
     return f"https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/download/{file_id}"
 
-def download_new_server_files(driver: webdriver.Chrome, download_url: str) -> None:
+def download_new_server_files(driver: webdriver.Chrome, download_url: str) -> str:
     try:
         logger.info(f"Downloading from: {download_url}")
         driver.get(download_url)
@@ -60,7 +60,12 @@ def download_new_server_files(driver: webdriver.Chrome, download_url: str) -> No
         )
         time.sleep(10)  # Wait for download to complete
 
+        # Get the file ID from the URL and construct the expected filename
+        file_id = download_url.split("/")[-1]
+        zip_name = f"Server-Files-{file_id}.zip"
+
         logger.info("Download completed successfully")
+        return zip_name
 
     except Exception as e:
         logger.error(f"Error downloading server files: {e}")
