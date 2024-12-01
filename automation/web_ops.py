@@ -12,8 +12,7 @@ from selenium.common.exceptions import TimeoutException
 
 logger = logging.getLogger(__name__)
 
-TIMEOUT_SECONDS = 60
-FORGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/all?page=1&pageSize=10"
+from config import TIMEOUT_SECONDS
 
 def get_latest_version_url(driver: webdriver.Chrome | None) -> str:
     if driver is None:
