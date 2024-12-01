@@ -1,1 +1,5 @@
 Server-Files-1.22
+.venv
+.aider*
+.env
+src\__pycache__
