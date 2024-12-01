@@ -41,6 +41,7 @@ class ServerUpdater:
             logger.info(f"Current version: {self.current_version}")
         else:
             logger.info("No existing version found")
+            return False
 
         logger.info("Setting up WebDriver...")
         self.driver = setup_webdriver()
@@ -57,7 +58,7 @@ class ServerUpdater:
             
             return True
         except Exception as e:
-            logger.error(f"Error fetching new version: {e}")
+            logger.error(f"Update can't continue. Please check your current server files can be found.")
             return False
 
     def update_server(self) -> bool:
