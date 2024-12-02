@@ -2,7 +2,7 @@
 
 import logging
 import sys
-from core.server_updater import ServerUpdater
+from core.classes.server_updater import ServerUpdater
 
 logging.basicConfig(
     level=logging.INFO,
