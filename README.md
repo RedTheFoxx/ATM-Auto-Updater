@@ -45,9 +45,9 @@ Update that ATM modpack with one click!
     --> whitelist.json
     --> ops.json
     --> eula.txt
-
-  - Bonus mods
-    --> Rcon Control mod in /mods folder
+    --> banned-ips.json
+    --> banned-players.json
+    --> server-icon.png
   ```
 
 ## 🛣️ Coming up next
