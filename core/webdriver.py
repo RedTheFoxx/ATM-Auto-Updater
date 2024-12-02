@@ -10,7 +10,7 @@ import pathlib
 
 logger = logging.getLogger(__name__)
 
-from config import TIMEOUT_SECONDS, OUTPUT_DIR, CHROME_OPTIONS, USER_AGENT
+from core.config import TIMEOUT_SECONDS, OUTPUT_DIR, CHROME_OPTIONS, USER_AGENT
 
 def setup_webdriver() -> webdriver.Chrome | None:
     chrome_options = Options()

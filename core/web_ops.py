@@ -12,7 +12,7 @@ from selenium.common.exceptions import TimeoutException
 
 logger = logging.getLogger(__name__)
 
-from config import TIMEOUT_SECONDS
+from core.config import TIMEOUT_SECONDS
 
 def get_latest_version_url(driver: webdriver.Chrome | None) -> str:
     if driver is None:

@@ -14,7 +14,7 @@ from core.web_ops import (
     get_current_version,
 )
 from core.filesystem_ops import backup_items, unzip_new_server_files, zip_directory
-from config import FORGE_URL, BACKUP_ITEMS
+from core.config import FORGE_URL, BACKUP_ITEMS
 
 logger = logging.getLogger(__name__)
 
