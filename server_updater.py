@@ -4,7 +4,8 @@ import logging
 from pathlib import Path
 from typing import Optional
 from selenium import webdriver
-
+import os
+import shutil
 from core.webdriver import setup_webdriver
 from core.web_ops import (
     get_latest_version_url,
@@ -12,7 +13,7 @@ from core.web_ops import (
     download_new_server_files,
     get_current_version,
 )
-from core.filesystem_ops import backup_items, unzip_new_server_files
+from core.filesystem_ops import backup_items, unzip_new_server_files, zip_directory
 from config import FORGE_URL, BACKUP_ITEMS
 
 logger = logging.getLogger(__name__)
@@ -67,10 +68,27 @@ class ServerUpdater:
             if not self.new_version_zip:
                 raise ValueError("No new version downloaded")
 
+            # Extract new server files first
             unzip_new_server_files(self.new_version_zip)
             
+            # Get the name of the extracted server directory (without .zip extension)
+            new_server_dir = self.new_version_zip.replace('.zip', '')
+            logger.info(f"New server directory: {new_server_dir}")
+            
+            # Copy backup items directly into the new server directory
             if self.current_version:
-                backup_items(self.current_version, self.new_version_zip, BACKUP_ITEMS)
+                logger.info(f"Transferring files from {self.current_version} to {new_server_dir}")
+                backup_items(self.current_version, new_server_dir, BACKUP_ITEMS)
+                
+                # Zip the old version
+                logger.info(f"Creating backup of old version: {self.current_version}")
+                zip_directory(self.current_version)
+                
+                # Clean up
+                logger.info("Cleaning up files...")
+                # shutil.rmtree(self.current_version)
+                os.remove(self.new_version_zip)
+                logger.info("Cleanup completed")
             
             return True
         except Exception as e:
