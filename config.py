@@ -14,6 +14,10 @@ BACKUP_ITEMS = {
     "journeymap": {"type": "folder"},
     "fluffyworld": {"type": "folder"},
     "eula.txt": {"type": "file"},
+    "user_jvm_args.txt": {"type": "file"},
+    "banned-ips.json": {"type": "file"},
+    "banned-players.json": {"type": "file"},
+    "servericon.png": {"type": "file"},
 }
 
 # Paths
