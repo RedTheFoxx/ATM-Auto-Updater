@@ -5,14 +5,14 @@ from pathlib import Path
 from typing import Optional
 from selenium import webdriver
 
-from automation.webdriver import setup_webdriver
-from automation.web_ops import (
+from core.webdriver import setup_webdriver
+from core.web_ops import (
     get_latest_version_url,
     build_download_url,
     download_new_server_files,
     get_current_version,
 )
-from automation.filesystem_ops import backup_items, unzip_new_server_files
+from core.filesystem_ops import backup_items, unzip_new_server_files
 from config import FORGE_URL, BACKUP_ITEMS
 
 logger = logging.getLogger(__name__)
