@@ -13,6 +13,7 @@ BACKUP_ITEMS = {
     "whitelist.json": {"type": "file"},
     "journeymap": {"type": "folder"},
     "fluffyworld": {"type": "folder"},
+    "eula.txt": {"type": "file"},
 }
 
 # Paths
